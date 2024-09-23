@@ -10,7 +10,6 @@ def subsets(nums):
 
         # Don't pick nums[i]
         backtrack(i + 1)
-
         # Pick nums[i]
         sol.append(nums[i])
         backtrack(i + 1)
