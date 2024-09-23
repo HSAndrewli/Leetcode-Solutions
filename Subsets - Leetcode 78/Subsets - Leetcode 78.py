@@ -1,23 +1,26 @@
-class Solution:
-    def subsets(self, nums: List[int]) -> List[List[int]]:
-        n = len(nums)
-        res, sol = [], []
 
-        def backtrack(i):
-            if i == n:
-                res.append(sol[:])
-                return
+def subsets(nums):
+    n = len(nums)
+    res, sol = [], []
 
-            # Don't pick nums[i]
-            backtrack(i + 1)
+    def backtrack(i):
+        if i == n:
+            res.append(sol[:])
+            return
 
-            # Pick nums[i]
-            sol.append(nums[i])
-            backtrack(i + 1)
-            sol.pop()
+        # Don't pick nums[i]
+        backtrack(i + 1)
 
-        backtrack(0)
-        return res
+        # Pick nums[i]
+        sol.append(nums[i])
+        backtrack(i + 1)
+        sol.pop()
+
+    backtrack(0)
+    return res
+
+print(subsets([1, 2, 3]))
 
 # Time Complexity: O(2^n)
 # Space Complexity: O(n)
+
